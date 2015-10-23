@@ -1,7 +1,7 @@
 import React from 'react';
 
-class Repos extends React.Component{
-  render(){
+class Repos extends React.Component {
+  render() {
     var repos = this.props.repos.map((repo, index) => {
       return (
         <li className="list-group-item" key={index}>
@@ -10,6 +10,7 @@ class Repos extends React.Component{
         </li>
       );
     });
+
     return (
       <div>
         <h3> User Repos </h3>
@@ -17,9 +18,9 @@ class Repos extends React.Component{
           {repos}
         </ul>
       </div>
-    )
+    );
   }
-};
+}
 
 Repos.propTypes = {
   username: React.PropTypes.string.isRequired,

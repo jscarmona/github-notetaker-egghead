@@ -1,7 +1,7 @@
 import React from 'react';
 
-class UserProfiles extends React.Component{
-  render(){
+class UserProfiles extends React.Component {
+  render() {
     return (
       <div>
         <h3> User Profile </h3>
@@ -12,19 +12,19 @@ class UserProfiles extends React.Component{
           {this.props.bio.email && <li className="list-group-item">Email: {this.props.bio.email}</li>}
           {this.props.bio.location && <li className="list-group-item">Location: {this.props.bio.location}</li>}
           {this.props.bio.company && <li className="list-group-item">Company: {this.props.bio.company}</li>}
-          {this.props.bio.followers>0 ? <li className="list-group-item">Followers: {this.props.bio.followers}</li> : ""}
-          {this.props.bio.following>0 ? <li className="list-group-item">Following: {this.props.bio.following}</li> : ""}
+          {this.props.bio.followers > 0 ? <li className="list-group-item">Followers: {this.props.bio.followers}</li> : ''}
+          {this.props.bio.following > 0 ? <li className="list-group-item">Following: {this.props.bio.following}</li> : ''}
           {this.props.bio.public_repos && <li className="list-group-item">Public Repos: {this.props.bio.public_repos}</li>}
           {this.props.bio.blog && <li className="list-group-item">Blog: <a href={this.props.bio.blog}> {this.props.bio.blog}</a></li>}
         </ul>
       </div>
-    )
+    );
   }
-};
+}
 
 UserProfiles.propTypes = {
   username: React.PropTypes.string.isRequired,
   bio: React.PropTypes.object.isRequired
-}
+};
 
 export default UserProfiles;

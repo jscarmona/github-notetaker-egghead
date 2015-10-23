@@ -7,16 +7,18 @@ import Rebase from 're-base';
 
 var base = Rebase.createClass('https://github-note-taker.firebaseio.com/');
 
-class Profile extends React.Component{
-  constructor(props){
+class Profile extends React.Component {
+  constructor(props) {
     super(props);
+
     this.state = {
       notes: [],
       bio: {},
       repos: []
     };
   }
-  init(){
+
+  init() {
     this.ref = base.bindToState(this.router.getCurrentParams().username, {
       context: this,
       asArray: true,
@@ -31,30 +33,37 @@ class Profile extends React.Component{
         });
       });
   }
-  componentWillMount(){
+
+  componentWillMount() {
     this.router = this.context.router;
   }
-  componentDidMount(){
+
+  componentDidMount() {
     this.init();
   }
-  componentWillUnmount(){
+
+  componentWillUnmount() {
     base.removeBinding(this.ref);
   }
-  componentWillReceiveProps(){
+
+  componentWillReceiveProps() {
     base.removeBinding(this.ref);
     this.init();
   }
-  handleAddNote(newNote){
+
+  handleAddNote(newNote) {
     base.post(this.router.getCurrentParams().username, {
       data: this.state.notes.concat([newNote])
     });
   }
-  render(){
+
+  render() {
     var username = this.router.getCurrentParams().username;
+
     return (
       <div className="row">
         <div className="col-md-4">
-          <UserProfile username={username} bio={this.state.bio}/>
+          <UserProfile username={username} bio={this.state.bio} />
         </div>
         <div className="col-md-4">
           <Repos username={username} repos={this.state.repos} />
@@ -66,9 +75,9 @@ class Profile extends React.Component{
             addNote={this.handleAddNote.bind(this)} />
         </div>
       </div>
-    )
+    );
   }
-};
+}
 
 Profile.contextTypes = {
   router: React.PropTypes.func.isRequired
